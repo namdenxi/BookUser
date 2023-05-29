@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="Layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Category</title>
+</head>
+<body>
+    <div layout:fragment="body-content">
+        <h1 class="text-center">List Category</h1>
+        <a th:href="@{/category/add}" class="btn btn-primary mb-3">New Category</a>
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.id}"></td>
+                <td th:text="${category.name}"></td>
+                <td>
+                    <a class="btn btn-info" th:href="@{|/category/edit/${category.id}|}">Edit</a>
+                    |
+                    <a class="btn btn-danger" th:href="@{'/category/delete/'+${category.id}}" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

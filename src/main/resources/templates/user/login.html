@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="Layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+</head>
+<body>
+<div layout:fragment="body-content">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <h3 class="card-title text-center">LOGIN</h3>
+            <form th:action="@{/login}" method="post">
+                <fieldset>
+<!--                    <legend>Please Login</legend>-->
+                    <div th:if="${param.error}" class="alert alert-danger">
+                        Invalid username and password.
+                    </div>
+                    <div th:if="${param.logout}" class="alert alert-success">
+                        You have been logged out.
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username: </label>
+                        <input type="text" required id="username" name="username" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password: </label>
+                        <input type="password" required id="password" name="password" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <input type="checkbox" id="remember-me" name="remember-me">
+                        <label for="remember-me" class="form-label">Remember me </label>
+                    </div>
+                    <div class="d-grid gap-2 form-action">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <a href="/register" class="text-primary text-center">Don't have account. Sign up?</a>
+                    </div>
+                </fieldset>
+            </form>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
